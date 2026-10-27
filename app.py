@@ -17,8 +17,8 @@ def index():
     return render_template('index.html', cities=citiesDic)
 
 #Endpoint for forecast
-@app.route('forecast')
-def forcast():
+@app.route('/forecast')
+def forecast():
     city = request.arg.get("city", "Stockholm")
     if city not in citiesDic:
         return render_template('404.html', city=city), 404
