@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Choose city</h1>
 <!--Jinja py to html, flask:take route func name return url-->
-<from action="{{ url_for('forecast')}}" method="get">
+<form action="{{ url_for('forecast')}}" method="get">
     <!--Html dropdown for choosing city-->
     <select name="city">
         <!--Loop over cities -->
