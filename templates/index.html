@@ -4,4 +4,17 @@
 <!--Wher in base to render-->
 {% block content %}
 <h1>Choose city</h1>
-
+<!--Jinja py to html, flask:take route func name return url-->
+<from action="{{ url_for('forcast')}}" method="get">
+    <!--Html dropdown for choosing city-->
+    <select name="city">
+        <!--Loop over cities -->
+        {% for city in cities}
+            <!--show every key as option and get string-->
+            <option value="{{city}}">{{city}}</option>
+        {% endfor %}
+    </select>
+    <!--confirm selected city and submit to be redirr-->
+    <button type="submit">Show forcast</button>
+</from>
+{% endblock %}
