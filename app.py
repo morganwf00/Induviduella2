@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from weather import getWeather, WeatherError #Api handeling
-#import pandas as pd #tabell
+import pandas as pd #tabell
 
 app = Flask(__name__)
 
@@ -31,9 +31,17 @@ def forecast():
     except WeatherError:
         return render_template('error.html'), 502
     
+    #make tabell of daily data using panda
+    df = pd.DataFrame(data['daily'])
+    #calculate the max temp for the three days rounded to one float rounded to 1 dec
+    meanMax = round(df['temperature_2m_max'].mean(),1)
+    
     return render_template(
         'forecast.html',
         city=city,
         current=data['current'],
-        daily=data['daily']
+        #daily=data['daily'],
+        #convert the list of dicts to ine dict per riw
+        days=df.to_dict(orient='records'),
+        meanMax=meanMax
         )
