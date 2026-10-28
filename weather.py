@@ -21,7 +21,7 @@ def getWeather(lat:float, lon:float) -> dict:
         # try to pull the data from the api with given argumeants
         svar = requests.get(APIURL, params=arg, timeout=5)
         svar.raise_for_status() # raise error if bad response
-        return svar.json() # return the json data frim the api
+        return svar.json() # return the json data frim the api as dict
         
     except requests.RequestException as e:
         raise WeatherError("Forcast data unavalible") from e
