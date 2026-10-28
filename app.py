@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from weather import getWeather, WeatherError
 app = Flask(__name__)
 
 # City list with corresponding cordinates
@@ -19,7 +19,18 @@ def index():
 #Endpoint for forecast
 @app.route('/forecast')
 def forecast():
-    city = request.args.get("city", "Stockholm")
+    city = request.args.get("city", "Stockholm")#Defults to stockholm
     if city not in citiesDic:
         return render_template('404.html', city=city), 404
-    return render_template('forecast.html', city=city)
+    
+    lat, lon = citiesDic[city] #Cordinates for params in weather
+    try:
+        data = getWeather(lat, lon)
+    except WeatherError:
+        return render_template('error.html'), 502
+    
+    return render_template(
+        'forecast.html',
+        city=city,
+        current=data['current']
+        daily=data['daily'])
