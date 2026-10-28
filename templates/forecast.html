@@ -4,11 +4,18 @@
     <h1>{{ city }}</h1>
     <!--Show current temp and wind based on what city was sent from app-->
     <p>
-        The current tempeture is {{ current.tempeture_2m }}°C
+        The current tempeture is {{ current.temperature_2m }} °C
     </p>
     <p>
         The current wind speed is {{ current.wind_speed_10m }}km/h
     </p>
+    <!--Whole json dict daily part-->
+    <pre>
+        {{ daily }}
+    </pre>
+    <pre>
+        {{ current }}
+    </pre>
     <!--using jinja to look for index if name changes hyperlink to index-->
     <a href="{{ url_for('index') }}">Change city</a>
 {% endblock %}
