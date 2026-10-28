@@ -32,5 +32,6 @@ def forecast():
     return render_template(
         'forecast.html',
         city=city,
-        current=data['current']
-        daily=data['daily'])
+        current=data['current'],
+        daily=data['daily']
+        )
