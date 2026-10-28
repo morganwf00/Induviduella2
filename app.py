@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from weather import getWeather, WeatherError
+from weather import getWeather, WeatherError #Api handeling
 app = Flask(__name__)
 
 # City list with corresponding cordinates

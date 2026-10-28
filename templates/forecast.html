@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+    <!--Title using jinja to display the current city name-->
     <h1>{{ city }}</h1>
+    <!--Show current temp and wind based on what city was sent from app-->
+    <p>
+        The current tempeture is {{ current.tempeture_2m }}°C
+    </p>
+    <p>
+        The current wind speed is {{ current.wind_speed_10m }}km/h
+    </p>
+    <!--using jinja to look for index if name changes hyperlink to index-->
     <a href="{{ url_for('index') }}">Change city</a>
 {% endblock %}
