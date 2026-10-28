@@ -3,12 +3,40 @@
     <!--Title using jinja to display the current city name-->
     <h1>{{ city }}</h1>
     <!--Show current temp and wind based on what city was sent from app-->
+    <h2>Current weather in {{ city }}</h2>
     <p>
         The current tempeture is {{ current.temperature_2m }} °C
     </p>
     <p>
         The current wind speed is {{ current.wind_speed_10m }}km/h
     </p>
+
+    <!--Forecast weathter table before plotly-->
+    <h2>Three day Forecast</h2>
+
+    <!--Pandas tabell-->
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Max</th>
+            <th>Min</th>
+            <th>Precipitation</th>            
+        </tr>
+        <!--loop over evey line in days-->
+        {% for day in days %}
+            <tr>
+                <td>{{day.time}}</td>
+                <td>{{day.temperature_2m_max}}°C</td>
+                <td>{{day.temperature_2m_min}}°C</td>
+                <td>{{day.precipitation_sum}}mm</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <p>
+        The avrage max tempeture in the upcoming three days is {{meanMax}}°C
+    </p>
+
     <!--Whole json dict daily part-->
     <pre>
         {{ daily }}
