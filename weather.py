@@ -7,9 +7,9 @@ class WeatherError(Exception):
     pass
 
 #Get waethr for latlon city return dict(json)
-def getWeather(lat: float, lon: float) -> dict[str, str | float |int]:
+def getWeather(lat: float, lon: float):# -> dict[str,str|float|int|dict]:
     # Values for request to use in the api GET
-    arg: dict[str, str | float |int] = {
+    arg: """dict[str, str | float |int]""" = {
         "latitude": lat,
         "longitude": lon,
         "current": "temperature_2m,wind_speed_10m",
